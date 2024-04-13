@@ -1,0 +1,52 @@
+body {
+    background-color: #000814;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+header {
+    text-align: left;
+}
+.logo {
+    width: 100px; 
+}
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.texto {
+    width: 45%;
+}
+.video {
+    width: 50%;
+}
+.btn {
+    display: inline-block;
+    margin: 10px 5px 0 0;
+    padding: 10px;
+    background-color: #4A0048; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn:hover {
+    background-color: #5A0058;
+}
+.sair {
+    text-decoration: underline;
+
+    background-color:#000814
+}
+.acessar {
+    background-color: #4A0048;
+}
+.minha-lista li {
+    margin-bottom: 10px;
+}
+.negrito {
+    font-weight: bold;
+}
