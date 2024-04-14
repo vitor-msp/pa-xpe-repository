@@ -1,0 +1,40 @@
+{
+    "financial_content_api_ingest_pipeline": {
+        "description": "get e-commerce accessed and financial content page redirected",
+        "processors": [
+            {
+                "grok": {
+                    "field": "url.query",
+                    "patterns": [
+                        "domain=%{DOMAIN:domainAccessed}"
+                    ],
+                    "pattern_definitions": {
+                        "DOMAIN": "([^&]+)"
+                    },
+                    "ignore_missing": true,
+                    "if": "return ctx?.url?.path == '/dev/api/financial-content';",
+                    "description": "get e-commerce accessed"
+                }
+            },
+            {
+                "foreach": {
+                    "field": "http.response.headers.Location",
+                    "processor": {
+                        "grok": {
+                            "field": "_ingest._value",
+                            "patterns": [
+                                "financial-content/%{FINANCIAL_CONTENT:financialContent}"
+                            ],
+                            "pattern_definitions": {
+                                "FINANCIAL_CONTENT": "([^?]+)"
+                            }
+                        }
+                    },
+                    "if": "return ctx?.url?.path == '/dev/api/financial-content';",
+                    "description": "get financial content page redirected"
+                }
+            }
+        ],
+        "version": 1
+    }
+}
